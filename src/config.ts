@@ -1,11 +1,11 @@
 export default {
     api: {
-        baseUrl: process.env.API_BASE_URL || 'https://f365.zyuhel.ru',
+        baseUrl: import.meta.env.VITE_API_BASE_URL || 'https://f365.zyuhel.ru',
     },
     imageHost: {
-        domain: process.env.IMAGE_HOSTNAME || 'http://f365.zyuhel.ru:3000' // Or use a more specific port if needed
-    }
+        domain: import.meta.env.VITE_IMAGE_HOSTNAME || 'http://f365.zyuhel.ru:3000'
+    },
     host: {
-        domain: process.env.HOSTNAME || 'http://f365.zyuhel.ru:3000' // Or use a more specific port if needed
+        domain: import.meta.env.VITE_HOSTNAME || 'http://f365.zyuhel.ru:3000'
     }
 };
