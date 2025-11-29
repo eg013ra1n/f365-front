@@ -188,7 +188,7 @@ img {
     <div class="lds-spinner" v-if="getLoading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <div v-else>
       <p>Completed 365: <span v-for=" (item, index) in getStats.finishers" :key="`finishers_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link><span v-if="index !== getStats.finishers.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link><span v-if="index !== getStats.finishers.length - 1">, </span>
       </span> </p>
       <p>Days with maximum participants: <span v-for=" (item, index) in getStats.max_participants" :key="`mp_${item.day_number}`">
         <router-link :to="`/day/${item.day_number}`">Day {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.max_participants.length - 1">, </span>
@@ -203,25 +203,25 @@ img {
         </template>
       </p>
       <p>Longest streaks without skips: <span v-for=" (item, index) in getStats.longest_streaks" :key="`ls_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_streaks.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_streaks.length - 1">, </span>
       </span> </p>
       <p>Longest top-3 streaks: <span v-for=" (item, index) in getStats.longest_leader" :key="`ll_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_leader.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_leader.length - 1">, </span>
       </span> </p>
       <p>Longest win streaks: <span v-for=" (item, index) in getStats.longest_win" :key="`lw_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_win.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_win.length - 1">, </span>
       </span> </p>
       <p>Most wins: <span v-for=" (item, index) in getStats.most_win" :key="`mw_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_win.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_win.length - 1">, </span>
       </span> </p>
       <p>Most top-3 finishes: <span v-for=" (item, index) in getStats.most_leader" :key="`mw_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_leader.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_leader.length - 1">, </span>
       </span></p>
       <p>Best upvotes ratio: <span v-for=" (item, index) in getStats.average_upvotes" :key="`mw_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.average_upvotes.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.average_upvotes.length - 1">, </span>
       </span></p>
       <p>Most photos: <span v-for=" (item, index) in getStats.most_photos" :key="`mw_${item.username}`">
-        <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_photos.length - 1">, </span>
+        <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_photos.length - 1">, </span>
       </span></p>
       <p>Average upvotes per photo - {{getStats.avgs.upvotes_avg}} (median {{getStats.avgs.upvotes_median}})</p>
       <p>Average downvotes per photo - {{getStats.avgs.downvotes_avg}} (median {{getStats.avgs.downvotes_median}})</p>

@@ -67,8 +67,8 @@ function getCurrentDay() {
             <span v-if="item.upvotes">{{item.upvotes}}❤️ </span><span v-if="item.upvotes && item.downvotes"> / </span><span v-if="item.downvotes">{{item.downvotes}}👎 </span>
           </div>
           <div v-if="for_calendar">
-            <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>
-          </div><div  v-else><router-link :to="`/day/${item.day_number}`">Day {{ item.day_number }}</router-link> - <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>,
+            <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>
+          </div><div  v-else><router-link :to="`/day/${item.day_number}`">Day {{ item.day_number }}</router-link> - <router-link :to="`/user/${item.username}`">{{ item.username }}</router-link> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>,
           <a :href="`https://t.me/photo_cyprus/${item.message_id}`" target="_blank">Post in channel</a></div></div>
       </div>
 
