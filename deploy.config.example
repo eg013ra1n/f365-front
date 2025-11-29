@@ -1,0 +1,8 @@
+# Deployment Configuration
+# Copy this file to deploy.config and update with your actual values
+# deploy.config is gitignored and won't be committed
+
+REMOTE_USER="root"
+REMOTE_HOST="your-server-ip"
+REMOTE_PORT="22"
+REMOTE_PATH="/var/www/f365-front"

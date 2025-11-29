@@ -18,6 +18,9 @@ coverage
 .env.production
 .env.local
 
+# Deployment configuration
+deploy.config
+
 /cypress/videos/
 /cypress/screenshots/
 
