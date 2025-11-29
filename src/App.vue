@@ -9,9 +9,12 @@ UIkit.use(Icons)
 
 <template>
   <nav class="uk-navbar-container uk-margin-remove-left uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-margin-bottom uk-margin-remove-top" uk-navbar >
-    <div class="uk-navbar-left"><router-link to="/best">Best</router-link></div>
-    <div class="uk-navbar-center"><router-link to="/user">By Author</router-link></div>
-    <div class="uk-navbar-right"><router-link to="/about">About</router-link></div>
+    <div class="uk-navbar-center">
+      <router-link to="/best">Best</router-link>
+      <router-link to="/user">By Author</router-link>
+      <router-link to="/stats">Statistics</router-link>
+      <router-link to="/about">About</router-link>
+    </div>
   </nav>
   <RouterView />
 </template>

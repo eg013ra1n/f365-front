@@ -11,10 +11,8 @@
         <li>Voting lasts one day and the next day</li>
       </ul>
       <p>This frontend was created for more convenient viewing of works by different authors. All rights to photos belong to their authors, links to original messages and author accounts (when possible) are provided.</p>
-      <p><router-link to="/stats">Statistics</router-link></p>
-
       <p>Send all complaints to <a href="https://t.me/VilenSharifov" target="_blank">@VilenSharifov</a></p>
-      <p>Original Frontend and API is written by <a href="https://t.me/zyuhel" target="_blank">@zyuhel</a></p>
+      <p>Original Frontend and API for the website are written by <a href="https://t.me/zyuhel" target="_blank">@zyuhel</a></p>
       
       <hr>
       <h4>How to participate?</h4>
