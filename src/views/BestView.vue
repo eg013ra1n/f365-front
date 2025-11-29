@@ -16,7 +16,7 @@
 
   }
   function setTitle() {
-    document.title = 'F365 - Случайные лучшие '
+    document.title = 'F365 - Random Best'
   }
 
   if ( !route.query?.seed) {
@@ -104,8 +104,8 @@ img {
 </style>
 <template>
   <main>
-    <h3>Подборка случайных фотографий из <span uk-tooltip="фотографии занявшие одно из первых трех мест по результатам ежедневного голосования">лучшего</span></h3>
+    <h3>Random photo selection from <span uk-tooltip="photos that took one of the top three places in daily voting">best</span></h3>
     <MasonryView :items="getBestImages" :userpage="false" />
-    <div class="uk-align-center uk-width-1-5@m uk-width-1-2"><router-link onclick='window.scrollTo( 0, 0 );' :to='"/best?seed=" + generateSeed()' class="uk-button uk-align-center uk-button-default">Обновить</router-link></div>
+    <div class="uk-align-center uk-width-1-5@m uk-width-1-2"><router-link onclick='window.scrollTo( 0, 0 );' :to='"/best?seed=" + generateSeed()' class="uk-button uk-align-center uk-button-default">Refresh</router-link></div>
   </main>
 </template>

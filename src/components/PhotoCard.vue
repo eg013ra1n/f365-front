@@ -22,7 +22,7 @@ function getCurrentDay() {
         <div class="uk-card-media-top">
           <a class="lightbox-link"
              :href="`${imageDomain}${item.image_url}`" :data-type="(item.is_video)?'video':'image'"
-             :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>День ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/factory365/${item.message_id}' >Пост в канале</a>`"
+             :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>Day ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/factory365/${item.message_id}' >Post in channel</a>`"
           >
             <video v-if="item.is_video" :src="item.image_url"  controls="true"></video>
             <img v-else
@@ -51,7 +51,7 @@ function getCurrentDay() {
     color: rgb(255, 255, 255);
     font-size: 0.7rem;
     text-align: center;
-    padding: 5px;" uk-tooltip="Результаты голосования отсутствуют">
+    padding: 5px;" uk-tooltip="Voting results are missing">
             🕑
           </div>
           <div v-if="show_detail && (item.upvotes || item.downvotes)" style="background-color: rgba(68, 68, 68,0.5);
@@ -68,8 +68,8 @@ function getCurrentDay() {
           </div>
           <div v-if="for_calendar">
             <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>
-          </div><div  v-else><router-link :to="`/day/${item.day_number}`">День {{ item.day_number }}</router-link> - <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>,
-          <a :href="`https://t.me/factory365/${item.message_id}`" target="_blank">Пост в канале</a></div></div>
+          </div><div  v-else><router-link :to="`/day/${item.day_number}`">Day {{ item.day_number }}</router-link> - <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>,
+          <a :href="`https://t.me/factory365/${item.message_id}`" target="_blank">Post in channel</a></div></div>
       </div>
 
 </template>

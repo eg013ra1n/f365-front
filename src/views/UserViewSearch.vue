@@ -15,7 +15,7 @@
   watch (input, debounce(() => {store.searchFor(input.value)},500));
 
   function setTitle() {
-    document.title = 'F365 - Поиск'
+    document.title = 'F365 - Search'
   }
 
   onMounted(() => {
@@ -95,9 +95,9 @@ img {
 </style>
 <template>
   <main>
-    <h4>Поиск по пользователю</h4>
+    <h4>Search by user</h4>
     <div class="uk-margin">
-      <input v-model="input" class="uk-input" type="text" placeholder="Введите имя..." aria-label="Input">
+      <input v-model="input" class="uk-input" type="text" placeholder="Enter name..." aria-label="Input">
       <div v-for="result in getSearchResults" :key="result.username"><router-link :to="`/user/${result.username}`">{{result.username}}</router-link></div>
     </div>
   </main>

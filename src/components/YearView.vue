@@ -40,7 +40,7 @@ function getMonths() {
   return retval
 }
 function setTitle() {
-  document.title = 'F365 - Победители за ' + props.year
+  document.title = 'F365 - Winners for ' + props.year
 }
 let loading = ref(true);
 const getLoading = computed(() => {
@@ -165,10 +165,10 @@ img {
 }
 </style>
 <template>
-  <h3><router-link :to="`/year/${parseInt(props.year)-1}`" v-if="parseInt(props.year)>2019" :title="parseInt(props.year)-1">&lt;</router-link><span v-else>&lt;</span> Победители за {{props.year}} <router-link :to="`/year/${parseInt(props.year)+1}`" v-if="parseInt(props.year)<new Date().getFullYear()" :title="parseInt(props.year)+1">&gt;</router-link><span v-else>&gt;</span></h3>
+  <h3><router-link :to="`/year/${parseInt(props.year)-1}`" v-if="parseInt(props.year)>2019" :title="parseInt(props.year)-1">&lt;</router-link><span v-else>&lt;</span> Winners for {{props.year}} <router-link :to="`/year/${parseInt(props.year)+1}`" v-if="parseInt(props.year)<new Date().getFullYear()" :title="parseInt(props.year)+1">&gt;</router-link><span v-else>&gt;</span></h3>
   <ul uk-tab>
-    <li><a href="#photos">Фотографии</a></li>
-    <li><a href="#stats">Статистика</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#stats">Statistics</a></li>
   </ul>
   <ul class="uk-switcher uk-margin">
     <li>
@@ -177,7 +177,7 @@ img {
       <i :style="getBottomPadding(item)"></i>
       <a class="lightbox-link"
          :href="`${imageDomain}${item.image_url}`" :data-type="(item.is_video)?'video':'image'"
-         :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>День ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/factory365/${item.message_id}' >Пост в канале</a>`"
+         :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>Day ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/factory365/${item.message_id}' >Post in channel</a>`"
       >
       <img :src="`${imageDomain}/${item.image_url}`" loading="lazy" alt="">
       </a>
@@ -187,46 +187,46 @@ img {
   <li>
     <div class="lds-spinner" v-if="getLoading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <div v-else>
-      <p>Месяца: <span v-for=" (item, index) in getMonths()" :key="`${props.year}_month_${item}`">
+      <p>Months: <span v-for=" (item, index) in getMonths()" :key="`${props.year}_month_${item}`">
         <router-link :to="`/month/${props.year}-${item}`">{{ item }}</router-link> <span v-if="index !== getMonths().length - 1">, </span>
       </span>  </p>
-      <p>Дни с максимальным количеством участников: <span v-for=" (item, index) in getStats.max_participants" :key="`mp_${item.day_number}`">
-        <router-link :to="`/day/${item.day_number}`">День {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.max_participants.length - 1">, </span>
+      <p>Days with maximum participants: <span v-for=" (item, index) in getStats.max_participants" :key="`mp_${item.day_number}`">
+        <router-link :to="`/day/${item.day_number}`">Day {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.max_participants.length - 1">, </span>
       </span> </p>
-      <p>Дни с минимальным количеством участников: <span v-for=" (item, index) in getStats.least_participants" :key="`ml_${item.day_number}`">
-        <router-link :to="`/day/${item.day_number}`">День {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.least_participants.length - 1">, </span>
+      <p>Days with least participants: <span v-for=" (item, index) in getStats.least_participants" :key="`ml_${item.day_number}`">
+        <router-link :to="`/day/${item.day_number}`">Day {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.least_participants.length - 1">, </span>
       </span> </p>
-      <p>Больше всего побед: <span v-for=" (item, index) in getStats.most_win" :key="`mw_${item.username}`">
+      <p>Most wins: <span v-for=" (item, index) in getStats.most_win" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_win.length - 1">, </span>
       </span> </p>
-      <p>Больше всего попаданий в первую тройку: <span v-for=" (item, index) in getStats.most_leader" :key="`mw_${item.username}`">
+      <p>Most top three finishes: <span v-for=" (item, index) in getStats.most_leader" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_leader.length - 1">, </span>
       </span></p>
-      <p>Лучшее соотношение лайков на фотографию: <span v-for=" (item, index) in getStats.average_upvotes" :key="`mw_${item.username}`">
+      <p>Best upvotes per photo ratio: <span v-for=" (item, index) in getStats.average_upvotes" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.average_upvotes.length - 1">, </span>
       </span></p>
-      <p>Больше всего фотографий: <span v-for=" (item, index) in getStats.most_photos" :key="`mw_${item.username}`">
+      <p>Most photos: <span v-for=" (item, index) in getStats.most_photos" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_photos.length - 1">, </span>
       </span></p>
-      <p>Среднее количество лайков у фотографии - {{getStats.avgs.upvotes_avg}} (медиана {{getStats.avgs.upvotes_median}})</p>
-      <p>Среднее количество дизлайков у фотографии - {{getStats.avgs.downvotes_avg}} (медиана {{getStats.avgs.downvotes_median}})</p>
-      <p>Среднее количество фотографий в день - {{getStats.avgs.count_avg}}</p>
-      <p>Среднее количество фотографий опубликованных каждым участником - {{getStats.avgs.count_user_avg}} (медиана {{getStats.avgs.count_user_median}})</p>
-      <p>Всего участников - {{getStats.avgs.count_user}}</p>
-      <p>Всего фотографий - {{getStats.avgs.total_count}}</p>
-      <h4>Фотографии с наибольшим количестом лайков:</h4>
+      <p>Average upvotes per photo - {{getStats.avgs.upvotes_avg}} (median {{getStats.avgs.upvotes_median}})</p>
+      <p>Average downvotes per photo - {{getStats.avgs.downvotes_avg}} (median {{getStats.avgs.downvotes_median}})</p>
+      <p>Average photos per day - {{getStats.avgs.count_avg}}</p>
+      <p>Average photos per participant - {{getStats.avgs.count_user_avg}} (median {{getStats.avgs.count_user_median}})</p>
+      <p>Total participants - {{getStats.avgs.count_user}}</p>
+      <p>Total photos - {{getStats.avgs.total_count}}</p>
+      <h4>Photos with most upvotes:</h4>
       <div class="uk-flex-row uk-flex" uk-lightbox="animation: slide; toggle: .lightbox-link">
         <div class="uk-width-1-3 uk-padding-small" v-for="item in getStats.best_works" >
           <PhotoCard :item="item" :key="item.message_id" :show_detail="true"></PhotoCard>
         </div>
       </div>
-      <h4>Фотографии с наибольшим количестом дизлайков:</h4>
+      <h4>Photos with most downvotes:</h4>
       <div class="uk-flex-row uk-flex" uk-lightbox="animation: slide; toggle: .lightbox-link">
         <div class="uk-width-1-3 uk-padding-small" v-for="item in getStats.worst_works" >
           <PhotoCard :item="item" :key="item.message_id" :show_detail="true"></PhotoCard>
         </div>
       </div>
-      <h4>Наиболее спорные фотографии:</h4>
+      <h4>Most controversial photos:</h4>
       <div class="uk-flex-row uk-flex" uk-lightbox="animation: slide; toggle: .lightbox-link">
         <div class="uk-width-1-3 uk-padding-small" v-for="item in getStats.controversial_works" >
           <PhotoCard :item="item" :key="item.message_id" :show_detail="true"></PhotoCard>

@@ -100,13 +100,13 @@ let items = [];
   <div v-for="month in getMonths" :key="`${month.year}-${month.month}`" class="calendar-parent">
     <h4>{{month.year}} - {{month.month}}</h4>
     <div class="calendar"  uk-lightbox="animation: slide; toggle: .lightbox-link">
-    <div class="calendar-day-header">Понедельник</div>
-    <div class="calendar-day-header">Вторник</div>
-    <div class="calendar-day-header">Среда</div>
-    <div class="calendar-day-header">Четверг</div>
-    <div class="calendar-day-header">Пятница</div>
-    <div class="calendar-day-header">Суббота</div>
-    <div class="calendar-day-header">Воскресенье</div>
+    <div class="calendar-day-header">Monday</div>
+    <div class="calendar-day-header">Tuesday</div>
+    <div class="calendar-day-header">Wednesday</div>
+    <div class="calendar-day-header">Thursday</div>
+    <div class="calendar-day-header">Friday</div>
+    <div class="calendar-day-header">Saturday</div>
+    <div class="calendar-day-header">Sunday</div>
     <div v-for="index in month.offset" class="calendar-day-empty"></div>
     <div v-for="(day, index) in month.days" class="calendar-day"><span class="calendar-date">{{day}}</span><PhotoCard v-if="month.works.length>0 && month.works.at(index)" :for_calendar="true" :item="month.works[index]" :show_detail="false" /><span v-else>🕑</span></div>
     </div>

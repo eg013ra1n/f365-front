@@ -23,7 +23,7 @@
   )
 
   function setTitle() {
-    document.title = 'F365 - Статистика'
+    document.title = 'F365 - Statistics'
   }
   onMounted(async () => {
     await store.getStats();
@@ -184,64 +184,64 @@ img {
 </style>
 <template>
   <main>
-    <h3>Немного статистики по участникам челленджа</h3>
+    <h3>Challenge Participants Statistics</h3>
     <div class="lds-spinner" v-if="getLoading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <div v-else>
-      <p>Выполнили 365: <span v-for=" (item, index) in getStats.finishers" :key="`finishers_${item.username}`">
+      <p>Completed 365: <span v-for=" (item, index) in getStats.finishers" :key="`finishers_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link><span v-if="index !== getStats.finishers.length - 1">, </span>
       </span> </p>
-      <p>Дни с максимальным количеством участников: <span v-for=" (item, index) in getStats.max_participants" :key="`mp_${item.day_number}`">
-        <router-link :to="`/day/${item.day_number}`">День {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.max_participants.length - 1">, </span>
+      <p>Days with maximum participants: <span v-for=" (item, index) in getStats.max_participants" :key="`mp_${item.day_number}`">
+        <router-link :to="`/day/${item.day_number}`">Day {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.max_participants.length - 1">, </span>
       </span> </p>
-      <p>Дни с минимальным количеством участников: <span v-for=" (item, index) in getStats.least_participants" :key="`ml_${item.day_number}`">
-        <router-link :to="`/day/${item.day_number}`">День {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.least_participants.length - 1">, </span>
+      <p>Days with minimum participants: <span v-for=" (item, index) in getStats.least_participants" :key="`ml_${item.day_number}`">
+        <router-link :to="`/day/${item.day_number}`">Day {{item.day_number}}</router-link> ({{item.cnt}})<span v-if="index !== getStats.least_participants.length - 1">, </span>
       </span> </p>
       <p>
-        Работы победители по годам:
+        Winners by year:
         <template v-for="(year, index) in years" :key="year">
           <router-link :to="`/year/${year}`">{{ year }}</router-link>{{ index === years.length - 1 ? '' : ', ' }}
         </template>
       </p>
-      <p>Самые длинные цепочки без пропусков: <span v-for=" (item, index) in getStats.longest_streaks" :key="`ls_${item.username}`">
+      <p>Longest streaks without skips: <span v-for=" (item, index) in getStats.longest_streaks" :key="`ls_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_streaks.length - 1">, </span>
       </span> </p>
-      <p>Самые длинные цепочки попадания в первую тройку: <span v-for=" (item, index) in getStats.longest_leader" :key="`ll_${item.username}`">
+      <p>Longest top-3 streaks: <span v-for=" (item, index) in getStats.longest_leader" :key="`ll_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_leader.length - 1">, </span>
       </span> </p>
-      <p>Самые длинные цепочки побед: <span v-for=" (item, index) in getStats.longest_win" :key="`lw_${item.username}`">
+      <p>Longest win streaks: <span v-for=" (item, index) in getStats.longest_win" :key="`lw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.longest_sequence}})<span v-if="index !== getStats.longest_win.length - 1">, </span>
       </span> </p>
-      <p>Больше всего побед: <span v-for=" (item, index) in getStats.most_win" :key="`mw_${item.username}`">
+      <p>Most wins: <span v-for=" (item, index) in getStats.most_win" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_win.length - 1">, </span>
       </span> </p>
-      <p>Больше всего попаданий в первую тройку: <span v-for=" (item, index) in getStats.most_leader" :key="`mw_${item.username}`">
+      <p>Most top-3 finishes: <span v-for=" (item, index) in getStats.most_leader" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_leader.length - 1">, </span>
       </span></p>
-      <p>Лучшее соотношение лайков на фотографию: <span v-for=" (item, index) in getStats.average_upvotes" :key="`mw_${item.username}`">
+      <p>Best upvotes ratio: <span v-for=" (item, index) in getStats.average_upvotes" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.average_upvotes.length - 1">, </span>
       </span></p>
-      <p>Больше всего фотографий: <span v-for=" (item, index) in getStats.most_photos" :key="`mw_${item.username}`">
+      <p>Most photos: <span v-for=" (item, index) in getStats.most_photos" :key="`mw_${item.username}`">
         <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a style="    display: inline-block;" :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" style="    display: inline-block;" class="uk-icon-link" uk-icon="album"></router-link> ({{item.cnt}})<span v-if="index !== getStats.most_photos.length - 1">, </span>
       </span></p>
-      <p>Среднее количество лайков у фотографии - {{getStats.avgs.upvotes_avg}} (медиана {{getStats.avgs.upvotes_median}})</p>
-      <p>Среднее количество дизлайков у фотографии - {{getStats.avgs.downvotes_avg}} (медиана {{getStats.avgs.downvotes_median}})</p>
-      <p>Среднее количество фотографий в день - {{getStats.avgs.count_avg}}</p>
-      <p>Среднее количество фотографий опубликованных каждым участником - {{getStats.avgs.count_user_avg}} (медиана {{getStats.avgs.count_user_median}})</p>
-      <p>Всего участников - {{getStats.avgs.count_user}}</p>
-      <p>Всего фотографий - {{getStats.avgs.total_count}}</p>
-      <h4>Фотографии с наибольшим количестом лайков:</h4>
+      <p>Average upvotes per photo - {{getStats.avgs.upvotes_avg}} (median {{getStats.avgs.upvotes_median}})</p>
+      <p>Average downvotes per photo - {{getStats.avgs.downvotes_avg}} (median {{getStats.avgs.downvotes_median}})</p>
+      <p>Average photos per day - {{getStats.avgs.count_avg}}</p>
+      <p>Average photos per participant - {{getStats.avgs.count_user_avg}} (median {{getStats.avgs.count_user_median}})</p>
+      <p>Total participants - {{getStats.avgs.count_user}}</p>
+      <p>Total photos - {{getStats.avgs.total_count}}</p>
+      <h4>Photos with most upvotes:</h4>
       <div class="uk-flex-row uk-flex" uk-lightbox="animation: slide; toggle: .lightbox-link">
       <div class="uk-width-1-3 uk-padding-small" v-for="item in getStats.best_works" >
         <PhotoCard :item="item" :key="item.message_id" :show_detail="true"></PhotoCard>
       </div>
       </div>
-      <h4>Фотографии с наибольшим количестом дизлайков:</h4>
+      <h4>Photos with most downvotes:</h4>
       <div class="uk-flex-row uk-flex" uk-lightbox="animation: slide; toggle: .lightbox-link">
         <div class="uk-width-1-3 uk-padding-small" v-for="item in getStats.worst_works" >
           <PhotoCard :item="item" :key="item.message_id" :show_detail="true"></PhotoCard>
         </div>
       </div>
-      <h4>Наиболее спорные фотографии:</h4>
+      <h4>Most controversial photos:</h4>
       <div class="uk-flex-row uk-flex" uk-lightbox="animation: slide; toggle: .lightbox-link">
         <div class="uk-width-1-3 uk-padding-small" v-for="item in getStats.controversial_works" >
           <PhotoCard :item="item" :key="item.message_id" :show_detail="true"></PhotoCard>

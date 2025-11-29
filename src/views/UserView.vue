@@ -31,7 +31,7 @@
     return false
   }
   function setTitle() {
-    document.title = 'F365 - Работы пользователя ' + props.user
+    document.title = 'F365 - User ' + props.user
   }
 
   async function sortByParam(argument) {
@@ -151,35 +151,35 @@ img {
 </style>
 <template>
   <main>
-    <h3>Подборка фотографий {{ user }}<span style="margin-left:1rem">
-      <a v-if="user[0]=='@'" class="uk-icon-button" target="_blank" :href="`https://t.me/${user.substring(1)}`" uk-tooltip="Написать в Telegram"><font-awesome-icon icon="fa-brands fa-telegram" /></a><span v-if="user[0]=='@' && getForUserLinks.length>0"> | </span>
+    <h3>{{ user }} photos<span style="margin-left:1rem">
+      <a v-if="user[0]=='@'" class="uk-icon-button" target="_blank" :href="`https://t.me/${user.substring(1)}`" uk-tooltip="Send message on Telegram"><font-awesome-icon icon="fa-brands fa-telegram" /></a><span v-if="user[0]=='@' && getForUserLinks.length>0"> | </span>
       <a v-for="link in getForUserLinks" :key="link.link" class="uk-icon-button" target="_blank" :uk-tooltip="link.tooltip" :href="link.link"><font-awesome-icon :icon="link.link_type" /></a>
     </span></h3>
     <ul uk-tab>
-      <li><a href="#photos">Фотографии</a></li>
-      <li><a href="#stats">Статистика</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#stats">Statistics</a></li>
     </ul>
     <ul class="uk-switcher uk-margin">
     <li>
       <nav class="uk-navbar-container uk-margin-remove-left sort-navbar uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-margin-bottom uk-margin-remove-top" uk-navbar >
-        <div class="uk-navbar-left uk-visible@m">Сортировка: </div>
-        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('early')}" to="?sort=early">Самые ранние</router-link></div>
-        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('last')}" to="?sort=last">Самые новые</router-link></div>
-        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('upvotes')}" to="?sort=upvotes">Лайки</router-link></div>
-        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('downvotes')}" to="?sort=downvotes">Говно</router-link></div>
-        <div class="uk-navbar-left  uk-visible@m"><router-link :class="{ active: isCurrent('controversial')}" to="?sort=controversial">Противоречивые</router-link></div>
+        <div class="uk-navbar-left uk-visible@m">Sort: </div>
+        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('early')}" to="?sort=early">Earliest</router-link></div>
+        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('last')}" to="?sort=last">Latest</router-link></div>
+        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('upvotes')}" to="?sort=upvotes">Likes</router-link></div>
+        <div class="uk-navbar-left"><router-link :class="{ active: isCurrent('downvotes')}" to="?sort=downvotes">Downvotes</router-link></div>
+        <div class="uk-navbar-left  uk-visible@m"><router-link :class="{ active: isCurrent('controversial')}" to="?sort=controversial">Controversial</router-link></div>
 
       </nav>
       <MasonryView :items="getForUser" :userpage="true" :key="`${user}_${sort}`"/>
     </li>
      <li>
         <ul>
-          <li>Всего фотографий опубликовано: {{getForUserStats.count}}</li>
-          <li>Самая длинная серия: {{getForUserStats.longest_sequence}}</li>
-          <li>Среднее количество лайков на фотографии: {{getForUserStats.upvotes_avg}}</li>
-          <li>Среднее количество дизлайков на фотографии: {{getForUserStats.downvotes_avg}}</li>
-          <li>Общее количество лайков на фотографии: {{getForUserStats.upvotes_sum}}</li>
-          <li>Общее количество дизлайков на фотографии: {{getForUserStats.downvotes_sum}}</li>
+          <li>Total photos published: {{getForUserStats.count}}</li>
+          <li>Longest streak: {{getForUserStats.longest_sequence}}</li>
+          <li>Average upvotes per photo: {{getForUserStats.upvotes_avg}}</li>
+          <li>Average downvotes per photo: {{getForUserStats.downvotes_avg}}</li>
+          <li>Total upvotes: {{getForUserStats.upvotes_sum}}</li>
+          <li>Total downvotes: {{getForUserStats.downvotes_sum}}</li>
           <li><span v-if="getForUserStats.place1">🥇 {{getForUserStats.place1}}</span><span  v-if="getForUserStats.place2">🥈 {{getForUserStats.place2}}</span><span  v-if="getForUserStats.place3">🥉  {{getForUserStats.place3}}</span></li>
         </ul>
 
