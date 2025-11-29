@@ -2,7 +2,7 @@
   <div class="about">
     <h3>About</h3>
     <div class="uk-text-default">
-      <p>Unofficial frontend for Telegram Channel - <a href="https://t.me/factory365" target="_blank">@factory365</a></p>
+      <p>Unofficial frontend for Telegram Channel - <a href="https://t.me/photo_cyprus" target="_blank">@factory365</a></p>
       <p>@factory365 is a channel for participants of the <a href="https://t.me/factory_chat" target="_blank">Factory Chat</a>, where photos of the 365 project are published with the following rules:</p>
       <ul>
         <li>you can only submit one photo per day</li>

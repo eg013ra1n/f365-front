@@ -22,7 +22,7 @@ function getCurrentDay() {
         <div class="uk-card-media-top">
           <a class="lightbox-link"
              :href="`${imageDomain}${item.image_url}`" :data-type="(item.is_video)?'video':'image'"
-             :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>Day ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/factory365/${item.message_id}' >Post in channel</a>`"
+             :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>Day ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/photo_cyprus/${item.message_id}' >Post in channel</a>`"
           >
             <video v-if="item.is_video" :src="item.image_url"  controls="true"></video>
             <img v-else
@@ -69,7 +69,7 @@ function getCurrentDay() {
           <div v-if="for_calendar">
             <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>
           </div><div  v-else><router-link :to="`/day/${item.day_number}`">Day {{ item.day_number }}</router-link> - <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>,
-          <a :href="`https://t.me/factory365/${item.message_id}`" target="_blank">Post in channel</a></div></div>
+          <a :href="`https://t.me/photo_cyprus/${item.message_id}`" target="_blank">Post in channel</a></div></div>
       </div>
 
 </template>

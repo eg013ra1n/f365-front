@@ -195,7 +195,7 @@ img {
       <i :style="getBottomPadding(item)"></i>
       <a class="lightbox-link"
          :href="`${imageDomain}${item.image_url}`" :data-type="(item.is_video)?'video':'image'"
-         :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>Day ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/factory365/${item.message_id}' >Post in channel</a>`"
+         :style="`min-height:${item.resizedHeight-10}px;display:block; `" :data-caption="`<span>Day ${item.day_number} - </span><span>${item.username}</span>, <a href='https://t.me/photo_cyprus/${item.message_id}' >Post in channel</a>`"
       >
       <img :src="`${imageDomain}/${item.image_url}`" loading="lazy" alt="">
       </a>
