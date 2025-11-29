@@ -63,8 +63,8 @@ function getCurrentDay() {
     color: rgb(255, 255, 255);
     font-size: 0.7rem;
     text-align: center;
-    padding: 5px;"  :uk-tooltip="`${item.upvotes}👍 / ${item.downvotes}💩`">
-            <span v-if="item.upvotes">{{item.upvotes}}👍 </span><span v-if="item.upvotes && item.downvotes"> / </span><span v-if="item.downvotes">{{item.downvotes}}💩</span>
+    padding: 5px;"  :uk-tooltip="`${item.upvotes}👍 / ${item.downvotes}👎`">
+            <span v-if="item.upvotes">{{item.upvotes}}👍 </span><span v-if="item.upvotes && item.downvotes"> / </span><span v-if="item.downvotes">{{item.downvotes}}👎</span>
           </div>
           <div v-if="for_calendar">
             <span v-if="item.username[0]!=='@'">{{ item.username }}</span><span v-else><a :href="`https://t.me/${item.username.substring(1)}`" target="_blank">{{item.username}}</a></span> <router-link :to="`/user/${item.username}`" class="uk-icon-link" uk-icon="album"></router-link>
